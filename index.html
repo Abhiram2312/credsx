@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cards</title>
+    <meta
+      name="description"
+      content="A personal ledger for Indian credit card statements. You pay the issuer yourself, then record the amount and date."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="mark" href="#top">Cards</a>
+      <span class="local">INR</span>
+    </header>
+
+    <main id="top">
+      <p class="lede">
+        Unpaid card statements, in rupees.<br />
+        You pay the issuer yourself.
+      </p>
+
+      <section class="well" aria-label="What the ledger tracks">
+        <div class="orbit" id="orbit">
+          <div class="ground" aria-hidden="true"></div>
+          <div class="core" aria-hidden="true"></div>
+          <article class="card ink" data-index="0">
+            <span class="num">01</span>
+            <div>
+              <h2>Outstanding</h2>
+              <p>What is left on each unpaid statement, added once.</p>
+            </div>
+          </article>
+          <article class="card" data-index="1">
+            <span class="num">02</span>
+            <div>
+              <h2>Minimum</h2>
+              <p>Known minimums, summed. A blank one stays “Not provided”.</p>
+            </div>
+          </article>
+          <article class="card" data-index="2">
+            <span class="num">03</span>
+            <div>
+              <h2>Next due</h2>
+              <p>The earliest unpaid due date. Due soon means 7 days.</p>
+            </div>
+          </article>
+          <article class="card" data-index="3">
+            <span class="num">04</span>
+            <div>
+              <h2>Statement</h2>
+              <p>You enter the statement date, due date, and total due.</p>
+            </div>
+          </article>
+          <article class="card" data-index="4">
+            <span class="num">05</span>
+            <div>
+              <h2>Payment</h2>
+              <p>Amount and date, after you pay. It cannot exceed what is left.</p>
+            </div>
+          </article>
+          <article class="card" data-index="5">
+            <span class="num">06</span>
+            <div>
+              <h2>History</h2>
+              <p>Paid statements stay here and leave the outstanding total.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script src="orbit.js"></script>
+  </body>
+</html>
