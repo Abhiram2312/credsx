@@ -228,22 +228,21 @@ body {
   width: max(44px, calc(var(--hub, 88px) * 0.72));
   height: max(44px, calc(var(--hub, 88px) * 0.72));
   place-items: center;
-  border: 1px solid rgba(243, 239, 232, 0.55);
+  border: 0;
   border-radius: 50%;
   background: transparent;
-  color: #f3efe8;
+  color: rgba(243, 239, 232, 0.78);
   font: inherit;
   font-size: max(20px, calc(var(--hub, 88px) * 0.3));
   font-weight: 300;
   line-height: 1;
   cursor: pointer;
   transform: translate(-50%, -50%);
-  transition: border-color 160ms ease, background-color 160ms ease;
+  transition: color 160ms ease;
 }
 
 .orbit-add-hub:hover {
-  border-color: rgba(243, 239, 232, 0.9);
-  background: rgba(243, 239, 232, 0.06);
+  color: #f3efe8;
 }
 
 .orbit-face {
@@ -254,14 +253,53 @@ body {
   width: var(--blade, 210px);
   height: calc(var(--blade, 210px) / 1.586);
   align-items: flex-end;
-  padding: 0 calc(var(--blade, 210px) * 0.09) calc(var(--blade, 210px) * 0.08) calc(var(--blade, 210px) * 0.3);
+  padding: 0 calc(var(--blade, 210px) * 0.07) calc(var(--blade, 210px) * 0.08) calc(var(--blade, 210px) * 0.5);
   border: 1px solid transparent;
   border-radius: 16px;
   color: #f4f0e8;
   font: inherit;
   text-align: left;
   cursor: pointer;
+  transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateX(var(--tucked, 0px)) scale(var(--tuck, 0.7));
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease,
+    --inner 380ms ease,
+    --fade 420ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
+}
+
+@property --inner {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --fade {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 78%;
+}
+
+.orbit-face {
+  --inner: 0;
+  --fade: 78%;
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, var(--inner)) 12%, #000 var(--fade));
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, var(--inner)) 12%, #000 var(--fade));
+}
+
+.orbit-face:hover,
+.orbit-face:focus-visible {
+  --inner: 1;
+  --fade: 5%;
+  z-index: 5;
+  transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateX(var(--raised, 0px)) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-face {
+    transition: none;
+  }
 }
 
 .orbit-face[data-skin="0"],

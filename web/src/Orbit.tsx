@@ -4,6 +4,7 @@ import { bladeSize, skinIndex } from "./orbitMath";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
 
 const CYCLE_MS = 36000;
+const TUCK = 0.7;
 
 type Props = {
   cards: CreditCard[];
@@ -69,7 +70,10 @@ export function Orbit({ cards, onOpen, onAdd }: Props) {
             data-skin={skinIndex(index)}
             aria-label={`${card.nickname} card`}
             style={{
-              transform: `translate(-50%, -50%) rotate(${-90 + (index * 360) / count}deg) translateX(${hub + width / 2}px)`,
+              ["--angle" as string]: `${-90 + (index * 360) / count}deg`,
+              ["--tucked" as string]: `${hub * 0.6 + (width * TUCK) / 2}px`,
+              ["--raised" as string]: `${hub + width / 2}px`,
+              ["--tuck" as string]: String(TUCK),
             }}
             onClick={() => onOpen(card.id)}
           >
