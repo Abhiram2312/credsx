@@ -62,7 +62,7 @@ export function Dashboard({ card, skin, onBack }: Props) {
         </h2>
         <motion.div
           aria-hidden
-          className="mt-5 h-px w-24 origin-left bg-white/45"
+          className="mt-5 h-px w-24 origin-left bg-accent"
           initial={reduced ? false : { scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={reduced ? { duration: 0 } : { duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
